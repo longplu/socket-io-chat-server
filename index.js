@@ -11,7 +11,6 @@ const io = new Server(server, {
     cors: {
         origin: 'https://socket-io-chat-long.netlify.app/',
         methods: ['GET', 'POST'],
-        allowedHeaders: ['Access-Control-Allow-Origin': '*'],
     },
 });
 
