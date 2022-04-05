@@ -33,6 +33,10 @@ io.on('connection', (socket) => {
     });
 });
 
+app.get("/", (req, res) => {
+    res.send("hello world");
+  });
+
 server.listen(process.env.PORT || 3001, () => {
     console.log("SERVER RUNNING")
 });
