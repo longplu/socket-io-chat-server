@@ -9,12 +9,16 @@ const server = http.createServer(app);
 
 const io = new Server(server, {
     cors: {
-        origin: 'https://socket-io-chat-long.netlify.app/',
+        origin: '*',
         methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
         preflightContinue: true,
         optionsSuccessStatus: 204,
     },
 });
+
+app.get("/", (req, res) => {
+    res.send("hello world");
+  });
 
 io.on('connection', (socket) => {
     console.log(`User Connected: ${socket.id}`);
@@ -33,11 +37,7 @@ io.on('connection', (socket) => {
     });
 });
 
-app.get("/", (req, res) => {
-    res.send("hello world");
-  });
-
-server.listen('https://socket-io-chat-server-long.herokuapp.com/', () => {
+server.listen(3001, () => {
     console.log("SERVER RUNNING")
 });
 
