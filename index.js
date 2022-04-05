@@ -1,16 +1,18 @@
-import { createServer } from 'http';
-import { Server } from 'socket.io';
 const express = require('express');
 const app = express();
+const http = require('http');
 const cors = require('cors');
+const { Server } = require('socket.io');
 app.use(cors());
 
-const httpServer = createServer();
+const server = http.createServer(app);
 
-const io = new Server(httpServer, {
+const io = new Server(server, {
     cors: {
         origin: 'https://socket-io-chat-long.netlify.app',
-        credentials: true,
+        methods: ['GET', 'POST'],
+        allowedHeaders: ['Access-Control-Allow-Origin': 'https://socket-io-chat-long.netlify.app'],
+        credentials: false
     },
 });
 
