@@ -33,10 +33,12 @@ io.on('connection', (socket) => {
     });
 });
 
+app.get("/", (req, res) => {
+    res.send("hello world");
+  });
+
 server.listen('https://socket-io-chat-server-long.herokuapp.com/', () => {
     console.log("SERVER RUNNING")
 });
 
-app.get("/", (req, res) => {
-    res.send("hello world");
-  });
+
