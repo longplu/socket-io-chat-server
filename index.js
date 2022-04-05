@@ -11,7 +11,7 @@ const io = new Server(server, {
     cors: {
         origin: 'https://socket-io-chat-long.netlify.app/',
         methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
-        preflightContinue: false,
+        preflightContinue: true,
         optionsSuccessStatus: 204,
     },
 });
