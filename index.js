@@ -9,10 +9,8 @@ const server = http.createServer(app);
 
 const io = new Server(server, {
     cors: {
-        origin: 'https://socket-io-chat-long.netlify.app',
-        methods: ["GET", "POST"],
-        allowedHeaders: ['Access-Control-Allow-Origin'],
-        credentials: true
+        origin: 'http://https://socket-io-chat-long.netlify.app/',
+        methods: ['GET', 'POST'],
     },
 });
 
@@ -27,7 +25,7 @@ io.on('connection', (socket) => {
     socket.on('send_message', (data) => {
         socket.to(data.room).emit('receive_message', data);
     });
-
+    
     socket.on('disconnect', ()=> {
         console.log(`User Disconnected: ${socket.id}`);
     });
