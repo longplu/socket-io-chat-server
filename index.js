@@ -10,8 +10,9 @@ const server = http.createServer(app);
 const io = new Server(server, {
     cors: {
         origin: 'https://socket-io-chat-long.netlify.app',
-        allowedHeaders: ['Access-Control-Allow-Origin': 'https://socket-io-chat-long.netlify.app'],
-        credentials: false
+        methods: ["GET", "POST"],
+        allowedHeaders: ['Access-Control-Allow-Origin'],
+        credentials: true
     },
 });
 
