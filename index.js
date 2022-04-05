@@ -1,7 +1,7 @@
+import cors from 'cors';
 const express = require('express');
 const app = express();
 const http = require('http');
-const cors = require('cors');
 const { Server } = require('socket.io');
 app.use(cors());
 
@@ -9,10 +9,7 @@ const server = http.createServer(app);
 
 const io = new Server(server, {
     cors: {
-        origin: 'https://socket-io-chat-long.netlify.app/',
-        methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
-        preflightContinue: false,
-        optionsSuccessStatus: 204,
+        origin: ['*'];
     },
 });
 
