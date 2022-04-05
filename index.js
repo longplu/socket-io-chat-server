@@ -10,6 +10,7 @@ const httpServer = createServer();
 const io = new Server(httpServer, {
     cors: {
         origin: 'https://socket-io-chat-long.netlify.app',
+        credentials: true,
     },
 });
 
