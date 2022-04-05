@@ -9,16 +9,12 @@ const server = http.createServer(app);
 
 const io = new Server(server, {
     cors: {
-        origin: '*',
+        origin: 'https://socket-io-chat-long.netlify.app/',
         methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
-        preflightContinue: true,
+        preflightContinue: false,
         optionsSuccessStatus: 204,
     },
 });
-
-app.get("/", (req, res) => {
-    res.send("hello world");
-  });
 
 io.on('connection', (socket) => {
     console.log(`User Connected: ${socket.id}`);
@@ -37,8 +33,6 @@ io.on('connection', (socket) => {
     });
 });
 
-server.listen(3001, () => {
+server.listen(process.env.PORT || 3001, () => {
     console.log("SERVER RUNNING")
 });
-
-
